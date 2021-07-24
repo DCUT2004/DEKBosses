@@ -566,9 +566,5 @@ defaultproperties
 	HighMaterials(2)=Class'DEKRPG208AA.AbilityMaterialNanite'
 	HighMaterials(3)=Class'DEKRPG208AA.AbilityMaterialPumice'
 	HighMaterials(4)=Class'DEKRPG208AA.AbilityMaterialIcicle'
-	VeryHighMaterials(0)=Class'DEKRPG208AA.AbilityMaterialTranslator'
-	VeryHighMaterials(1)=Class'DEKRPG208AA.AbilityMaterialHourglass'
-	VeryHighMaterials(2)=Class'DEKRPG208AA.AbilityMaterialMoonlitStone'
-	VeryHighMaterials(3)=Class'DEKRPG208AA.AbilityMaterialStarChart'
-	VeryHighMaterials(4)=Class'DEKRPG208AA.AbilityMaterialUranium'
+	VeryHighMaterials(0)=Class'DEKRPG208AA.AbilityMaterialHourglass'
 }

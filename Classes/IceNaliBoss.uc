@@ -534,9 +534,9 @@ defaultproperties
 	HealthMax=10000.000000
 	Health=35000
 	MaterialChance=30
-	LowMaterialChance=35
-	MediumMaterialChance=55
-	HighMaterialChance=85
+	LowMaterialChance=40
+	MediumMaterialChance=60
+	HighMaterialChance=90
 	LowMaterials(0)=Class'DEKRPG208AA.AbilityMaterialLumber'
 	LowMaterials(1)=Class'DEKRPG208AA.AbilityMaterialCombatBoots'
 	LowMaterials(2)=Class'DEKRPG208AA.AbilityMaterialTarydiumShards'
