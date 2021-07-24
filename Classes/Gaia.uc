@@ -457,15 +457,15 @@ defaultproperties
 	DamageReductionMultiplier=0.500000
 	XPReward=200
 	MinionClass=Class'DEKBossMonsters208AA.MinionEarthMercenary'
-	AdrenDripAmount=5
+	AdrenDripAmount=7
 	bComboDamage=True
 	bComboDamageAll=True
 	ComboDamage=50
 	ComboDamageType=Class'DEKRPG208AA.DamTypeCombo'
-	ComboClass(0)=Class'DEKRPG208AA.ComboRegenerateInv'
-	ComboClass(1)=Class'DEKRPG208AA.ComboDefenseInv'
-	ComboData(0)=(LifeSpan=20,Multiplier=20.000000,bDispellable=True,bAll=True,bBuff=True)
-	ComboData(1)=(LifeSpan=20,Multiplier=0.8000000,bDispellable=True,bAll=True,bBuff=True)
+	ComboClass(0)=Class'DEKRPG208AA.ComboAttackInv'
+	ComboClass(1)=Class'DEKRPG208AA.ComboHealStopInv'
+	ComboData(0)=(LifeSpan=20,Multiplier=1.200000,bDispellable=True,bAll=True,bBuff=True)
+	ComboData(1)=(LifeSpan=20,Multiplier=1.0000000,bDispellable=True,bAll=True,bBuff=False)
 	AChannel=255
 	TeleportRange=7000.000000
 	OwnerName="Gaia"
