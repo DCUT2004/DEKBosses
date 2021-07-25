@@ -17,5 +17,5 @@ defaultproperties
 {
      Damage=60.000000
      DamageRadius=375.000000
-     MyDamageType=Class'DEKBossMonsters208AA.DamTypeDEKLucifer'
+     MyDamageType=Class'DEKBossMonsters208AB.DamTypeDEKLucifer'
 }

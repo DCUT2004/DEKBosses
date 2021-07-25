@@ -130,5 +130,5 @@ defaultproperties
      Speed=1700.000000
      MaxSpeed=1700.000000
      Damage=60.000000
-     MyDamageType=Class'DEKBossMonsters208AA.DamTypeIceNali'
+     MyDamageType=Class'DEKBossMonsters208AB.DamTypeIceNali'
 }

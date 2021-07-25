@@ -8,7 +8,7 @@ static function GetHitEffects(out class<xEmitter> HitEffects[4], int VictemHealt
 
 defaultproperties
 {
-     WeaponClass=Class'DEKBossMonsters208AA.WeaponLucifer'
+     WeaponClass=Class'DEKBossMonsters208AB.WeaponLucifer'
      DeathString="%o was sent to Hell by Lucifer."
      FemaleSuicide="Lucifer destroyed herself."
      MaleSuicide="Lucifer destroyed himself."

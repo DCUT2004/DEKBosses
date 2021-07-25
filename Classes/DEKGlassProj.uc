@@ -7,5 +7,5 @@ defaultproperties
      MaxSpeed=2800.000000
      Damage=100.000000
 	 DamageRadius=300.000
-     MyDamageType=Class'DEKBossMonsters208AA.DamTypeDEKGlass'
+     MyDamageType=Class'DEKBossMonsters208AB.DamTypeDEKGlass'
 }

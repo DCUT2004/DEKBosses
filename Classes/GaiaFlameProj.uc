@@ -6,5 +6,5 @@ defaultproperties
      MaxSpeed=1800.000000
      Damage=55.000000
      DamageRadius=310.000000
-     MyDamageType=Class'DEKBossMonsters208AA.DamTypeGaiaFlameProj'
+     MyDamageType=Class'DEKBossMonsters208AB.DamTypeGaiaFlameProj'
 }

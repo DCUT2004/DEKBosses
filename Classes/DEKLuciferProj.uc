@@ -20,5 +20,5 @@ defaultproperties
      MaxSpeed=1300.000000
      Damage=100.000000
      DamageRadius=500.000000
-     MyDamageType=Class'DEKBossMonsters208AA.DamTypeDEKLucifer'
+     MyDamageType=Class'DEKBossMonsters208AB.DamTypeDEKLucifer'
 }

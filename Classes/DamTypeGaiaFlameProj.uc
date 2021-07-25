@@ -7,5 +7,5 @@ defaultproperties
 	bFlaming=True
 	bSkeletize=True
      DeathString="%o was burned by Gaia."
-     WeaponClass=Class'DEKBossMonsters208AA.WeaponGaia'
+     WeaponClass=Class'DEKBossMonsters208AB.WeaponGaia'
 }

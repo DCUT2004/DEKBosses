@@ -4,6 +4,6 @@ class DamTypeGaiaPoison extends WeaponDamageType
 defaultproperties
 {
      DeathString="%o became ill from Gaia's poison."
-     WeaponClass=Class'DEKBossMonsters208AA.Weapongaia'
+     WeaponClass=Class'DEKBossMonsters208AB.Weapongaia'
      DeathOverlayMaterial=Shader'XGameShaders.PlayerShaders.LinkHit'
 }
