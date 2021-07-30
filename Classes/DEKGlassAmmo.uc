@@ -3,5 +3,5 @@ class DEKGlassAmmo extends Ammunition;
 defaultproperties
 {
      bLeadTarget=True
-     ProjectileClass=Class'DEKBossMonsters208AB.DEKGlassProj'
+     ProjectileClass=Class'DEKBossMonsters208AC.DEKGlassProj'
 }

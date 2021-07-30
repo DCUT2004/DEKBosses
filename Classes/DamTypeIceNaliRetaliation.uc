@@ -3,6 +3,6 @@ class DamTypeIceNaliRetaliation extends WeaponDamageType
 
 defaultproperties
 {
-     WeaponClass=Class'DEKBossMonsters208AB.WeaponIceNali'
+     WeaponClass=Class'DEKBossMonsters208AC.WeaponIceNali'
      DeathString="%o, why would you try to use freeze magic on Ice Nali?"
 }

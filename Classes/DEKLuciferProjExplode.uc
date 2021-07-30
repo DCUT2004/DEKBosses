@@ -46,7 +46,7 @@ defaultproperties
          VelocityScale(1)=(RelativeTime=0.500000,RelativeVelocity=(X=1.000000,Y=1.000000,Z=1.000000))
          VelocityScale(2)=(RelativeTime=1.000000,RelativeVelocity=(X=10.000000,Y=10.000000,Z=10.000000))
      End Object
-     Emitters(0)=SpriteEmitter'DEKBossMonsters208AB.DEKLuciferProjExplode.SpriteEmitter0'
+     Emitters(0)=SpriteEmitter'DEKBossMonsters208AC.DEKLuciferProjExplode.SpriteEmitter0'
 
      Begin Object Class=SpriteEmitter Name=SpriteEmitter1
          FadeOut=True
@@ -81,7 +81,7 @@ defaultproperties
          VelocityScale(0)=(RelativeVelocity=(X=5.000000,Y=5.000000,Z=5.000000))
          VelocityScale(1)=(RelativeTime=1.000000)
      End Object
-     Emitters(1)=SpriteEmitter'DEKBossMonsters208AB.DEKLuciferProjExplode.SpriteEmitter1'
+     Emitters(1)=SpriteEmitter'DEKBossMonsters208AC.DEKLuciferProjExplode.SpriteEmitter1'
 
      AutoDestroy=True
      bNoDelete=False
