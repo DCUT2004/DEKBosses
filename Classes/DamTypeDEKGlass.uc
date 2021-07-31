@@ -3,7 +3,7 @@ class DamTypeDEKGlass extends WeaponDamageType
 
 defaultproperties
 {
-     WeaponClass=Class'DEKBossMonsters208AC.WeaponGlass'
+     WeaponClass=Class'DEKBossMonsters208AD.WeaponGlass'
      DeathString="%o was killed by Glass!"
      bCauseConvulsions=True
      DamageOverlayTime=0.050000
