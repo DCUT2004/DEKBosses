@@ -25,6 +25,6 @@ defaultproperties
 	MaxSpeed=2300.000000
 	Damage=100.000000
     DamageRadius=400.000000
-    ExplodeClass=Class'DEKBossMonsters208AE.GaiaProjectileExplode'
-    MyDamageType=Class'DEKBossMonsters208AE.DamTypeGaiaPoison'
+    ExplodeClass=Class'DEKBossMonsters208AF.GaiaProjectileExplode'
+    MyDamageType=Class'DEKBossMonsters208AF.DamTypeGaiaPoison'
 }
