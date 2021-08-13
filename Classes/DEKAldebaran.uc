@@ -156,7 +156,7 @@ function StartCombo()
 		BInv.AdrenCounter = 0;
 	Instigator.Controller.Adrenaline = 0;
 	
-	Instigator.PlaySound(Sound'DEKBossMonsters208AF.Boss.BossComboActivate', SLOT_None, 800.0,,2000.00);
+	Instigator.PlaySound(Sound'DEKBossMonsters208AG.Boss.BossComboActivate', SLOT_None, 800.0,,2000.00);
 }
 
 
@@ -378,13 +378,13 @@ defaultproperties
 {
      DamageReductionMultiplier=0.500000
      XPReward=200
-     MinionClass=Class'DEKBossMonsters208AF.MinionPhantom'
+     MinionClass=Class'DEKBossMonsters208AG.MinionPhantom'
      AdrenDripAmount=5
-     ComboClass(0)=Class'DEKRPG208AF.ComboHealthMaxInv'
+     ComboClass(0)=Class'DEKRPG208AG.ComboHealthMaxInv'
      bComboDamage=True
      bComboDamageMulti=True
      ComboDamage=200
-     ComboDamageType=Class'DEKRPG208AF.DamTypeCombo'
+     ComboDamageType=Class'DEKRPG208AG.DamTypeCombo'
      ComboData(0)=(LifeSpan=25,Multiplier=0.600000,bDispellable=True,bAll=False,bMulti=True,bSingle=False)
      AChannel=255
      TeleportRange=7000.000000
@@ -396,5 +396,5 @@ defaultproperties
      ProjectileDamage=50
      Mass=1000.000000
 	 ScaleMultiplier=2.00
-     ControllerClass=Class'DEKMonsters208AF.DCMonsterController'
+     ControllerClass=Class'DEKMonsters208AG.DCMonsterController'
 }

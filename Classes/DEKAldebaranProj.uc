@@ -5,5 +5,5 @@ defaultproperties
      Speed=1000.000000
      MaxSpeed=1000.000000
      Damage=70.000000
-     MyDamageType=Class'DEKBossMonsters208AF.DamTypeDEKAldebaran'
+     MyDamageType=Class'DEKBossMonsters208AG.DamTypeDEKAldebaran'
 }

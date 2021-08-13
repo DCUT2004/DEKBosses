@@ -184,7 +184,7 @@ function StartCombo()
 		BInv.AdrenCounter = 0;
 	Instigator.Controller.Adrenaline = 0;
 	
-	Instigator.PlaySound(Sound'DEKBossMonsters208AF.Boss.BossComboActivate', SLOT_None, 800.0,,2000.00);
+	Instigator.PlaySound(Sound'DEKBossMonsters208AG.Boss.BossComboActivate', SLOT_None, 800.0,,2000.00);
 }
 
 function vector GetFireStart(vector X, vector Y, vector Z)
@@ -517,19 +517,19 @@ function RewardMaterial()
 
 defaultproperties
 {
-	AmmunitionClass=Class'DEKBossMonsters208AF.IceNaliBossAmmo'
+	AmmunitionClass=Class'DEKBossMonsters208AG.IceNaliBossAmmo'
 	DamageReductionMultiplier=0.500000
 	XPReward=200
-	MinionClass=Class'DEKBossMonsters208AF.MinionIceSlith'
+	MinionClass=Class'DEKBossMonsters208AG.MinionIceSlith'
 	AdrenDripAmount=7
-	ComboClass(0)=Class'DEKRPG208AF.ComboFreezeInv'
+	ComboClass(0)=Class'DEKRPG208AG.ComboFreezeInv'
 	bComboDamage=True
 	bComboDamageAll=True
 	ComboDamage=100
-	ComboDamageType=Class'DEKRPG208AF.DamTypeCombo'
+	ComboDamageType=Class'DEKRPG208AG.DamTypeCombo'
 	ComboData(0)=(LifeSpan=10,Multiplier=5.000000,bDispellable=True,bAll=True,bBuff=False)
 	RetaliationPercent=0.5000
-	DamTypeRetaliationClass=Class'DEKBossMonsters208AF.DamTypeIceNaliRetaliation'
+	DamTypeRetaliationClass=Class'DEKBossMonsters208AG.DamTypeIceNaliRetaliation'
 	OwnerName="Arctic Nali"
 	HealthMax=10000.000000
 	Health=35000
@@ -537,23 +537,23 @@ defaultproperties
 	LowMaterialChance=40
 	MediumMaterialChance=60
 	HighMaterialChance=90
-	LowMaterials(0)=Class'DEKRPG208AF.AbilityMaterialLumber'
-	LowMaterials(1)=Class'DEKRPG208AF.AbilityMaterialCombatBoots'
-	LowMaterials(2)=Class'DEKRPG208AF.AbilityMaterialTarydiumShards'
-	LowMaterials(3)=Class'DEKRPG208AF.AbilityMaterialSteel'
-	LowMaterials(4)=Class'DEKRPG208AF.AbilityMaterialNaliFruit'
-	LowMaterials(5)=Class'DEKRPG208AF.AbilityMaterialGloves'
-	MediumMaterials(0)=Class'DEKRPG208AF.AbilityMaterialLeather'
-	MediumMaterials(1)=Class'DEKRPG208AF.AbilityMaterialPlatedArmor'
-	MediumMaterials(2)=Class'DEKRPG208AF.AbilityMaterialHoneysuckleVine'
-	MediumMaterials(3)=Class'DEKRPG208AF.AbilityMaterialEmbers'
-	MediumMaterials(4)=Class'DEKRPG208AF.AbilityMaterialArcticSuit'
-	HighMaterials(0)=Class'DEKRPG208AF.AbilityMaterialMoss'
-	HighMaterials(1)=Class'DEKRPG208AF.AbilityMaterialDust'
-	HighMaterials(2)=Class'DEKRPG208AF.AbilityMaterialNanite'
-	HighMaterials(3)=Class'DEKRPG208AF.AbilityMaterialPumice'
-	HighMaterials(4)=Class'DEKRPG208AF.AbilityMaterialIcicle'
-	VeryHighMaterials(0)=Class'DEKRPG208AF.AbilityMaterialMoonlitStone'
+	LowMaterials(0)=Class'DEKRPG208AG.AbilityMaterialLumber'
+	LowMaterials(1)=Class'DEKRPG208AG.AbilityMaterialCombatBoots'
+	LowMaterials(2)=Class'DEKRPG208AG.AbilityMaterialTarydiumShards'
+	LowMaterials(3)=Class'DEKRPG208AG.AbilityMaterialSteel'
+	LowMaterials(4)=Class'DEKRPG208AG.AbilityMaterialNaliFruit'
+	LowMaterials(5)=Class'DEKRPG208AG.AbilityMaterialGloves'
+	MediumMaterials(0)=Class'DEKRPG208AG.AbilityMaterialLeather'
+	MediumMaterials(1)=Class'DEKRPG208AG.AbilityMaterialPlatedArmor'
+	MediumMaterials(2)=Class'DEKRPG208AG.AbilityMaterialHoneysuckleVine'
+	MediumMaterials(3)=Class'DEKRPG208AG.AbilityMaterialEmbers'
+	MediumMaterials(4)=Class'DEKRPG208AG.AbilityMaterialArcticSuit'
+	HighMaterials(0)=Class'DEKRPG208AG.AbilityMaterialMoss'
+	HighMaterials(1)=Class'DEKRPG208AG.AbilityMaterialDust'
+	HighMaterials(2)=Class'DEKRPG208AG.AbilityMaterialNanite'
+	HighMaterials(3)=Class'DEKRPG208AG.AbilityMaterialPumice'
+	HighMaterials(4)=Class'DEKRPG208AG.AbilityMaterialIcicle'
+	VeryHighMaterials(0)=Class'DEKRPG208AG.AbilityMaterialMoonlitStone'
 	AChannel=255
 	DeathAnim(0)="Dead"
 	DeathAnim(1)="Dead2"
@@ -566,7 +566,7 @@ defaultproperties
 	HitSound(3)=Sound'satoreMonsterPackv120.Nali.injur2n'
 	DeathSound(0)=Sound'satoreMonsterPackv120.Nali.death1n'
 	DeathSound(1)=Sound'satoreMonsterPackv120.Nali.death2n'
-    GibGroupClass=Class'DEKMonsters208AF.IceGibGroup'
+    GibGroupClass=Class'DEKMonsters208AG.IceGibGroup'
 	WallDodgeAnims(0)="levitate"
 	WallDodgeAnims(1)="levitate"
 	WallDodgeAnims(2)="levitate"
@@ -578,7 +578,7 @@ defaultproperties
 	FireRifleRapidAnim="spell"
 	FireRifleBurstAnim="spell"
 	MeleeRange=60.000000
-	ControllerClass=Class'DEKMonsters208AF.DCMonsterController'
+	ControllerClass=Class'DEKMonsters208AG.DCMonsterController'
 	MovementAnims(0)="levitate"
 	MovementAnims(1)="levitate"
 	MovementAnims(2)="levitate"
