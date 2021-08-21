@@ -43,7 +43,7 @@ defaultproperties
          RotationNormal=(X=100.000000,Y=10.000000,Z=100.000000)
          LifetimeRange=(Min=0.100000,Max=0.100000)
      End Object
-     Emitters(0)=MeshEmitter'DEKBossMonsters208AG.BossShield.MeshEmitter0'
+     Emitters(0)=MeshEmitter'DEKBossMonsters208AJ.BossShield.MeshEmitter0'
 
      Begin Object Class=SpriteEmitter Name=SpriteEmitter0
          UniformSize=True
@@ -56,7 +56,7 @@ defaultproperties
          Texture=Texture'AW-2004Particles.Energy.EclipseCircle'
          LifetimeRange=(Min=0.100000,Max=0.100000)
      End Object
-     Emitters(1)=SpriteEmitter'DEKBossMonsters208AG.BossShield.SpriteEmitter0'
+     Emitters(1)=SpriteEmitter'DEKBossMonsters208AJ.BossShield.SpriteEmitter0'
 
      Begin Object Class=SpriteEmitter Name=SpriteEmitter1
          UniformSize=True
@@ -68,7 +68,7 @@ defaultproperties
          Texture=Texture'AW-2004Particles.Energy.SmoothRing'
          LifetimeRange=(Min=0.100000,Max=0.100000)
      End Object
-     Emitters(2)=SpriteEmitter'DEKBossMonsters208AG.BossShield.SpriteEmitter1'
+     Emitters(2)=SpriteEmitter'DEKBossMonsters208AJ.BossShield.SpriteEmitter1'
 
      Begin Object Class=SpriteEmitter Name=SpriteEmitter3
          UniformSize=True
@@ -78,7 +78,7 @@ defaultproperties
          Texture=Texture'AW-2k4XP.Weapons.ShockTankEffectCore2'
          LifetimeRange=(Min=0.100000,Max=0.100000)
      End Object
-     Emitters(3)=SpriteEmitter'DEKBossMonsters208AG.BossShield.SpriteEmitter3'
+     Emitters(3)=SpriteEmitter'DEKBossMonsters208AJ.BossShield.SpriteEmitter3'
 
      Begin Object Class=SpriteEmitter Name=SpriteEmitter4
          FadeOut=True
@@ -103,7 +103,7 @@ defaultproperties
          Texture=Texture'AW-2004Particles.Energy.SmoothRing'
          LifetimeRange=(Min=1.000000,Max=1.000000)
      End Object
-     Emitters(4)=SpriteEmitter'DEKBossMonsters208AG.BossShield.SpriteEmitter4'
+     Emitters(4)=SpriteEmitter'DEKBossMonsters208AJ.BossShield.SpriteEmitter4'
 
      bNoDelete=False
      RemoteRole=ROLE_SimulatedProxy

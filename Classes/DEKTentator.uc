@@ -165,7 +165,7 @@ function StartCombo()
 		BInv.AdrenCounter = 0;
 	Instigator.Controller.Adrenaline = 0;
 	
-	Instigator.PlaySound(Sound'DEKBossMonsters208AG.Boss.BossComboActivate', SLOT_None, 800.0,,2000.00);
+	Instigator.PlaySound(Sound'DEKBossMonsters208AJ.Boss.BossComboActivate', SLOT_None, 800.0,,2000.00);
 }
 
 function Teleport()
@@ -525,13 +525,13 @@ defaultproperties
 {
 	DamageReductionMultiplier=0.500000
 	XPReward=200
-	MinionClass=Class'DEKBossMonsters208AG.MinionIceSkaarj'
+	MinionClass=Class'DEKBossMonsters208AJ.MinionIceSkaarj'
 	AdrenDripAmount=7
-	ComboClass(0)=Class'DEKRPG208AG.ComboLifeDrainInv'
-	ComboClass(1)=Class'DEKRPG208AG.ComboMisfortuneInv'
+	ComboClass(0)=Class'DEKRPG208AJ.ComboLifeDrainInv'
+	ComboClass(1)=Class'DEKRPG208AJ.ComboMisfortuneInv'
 	bComboDamage=False
 	ComboDamage=0
-	ComboDamageType=Class'DEKRPG208AG.DamTypeCombo'
+	ComboDamageType=Class'DEKRPG208AJ.DamTypeCombo'
 	ComboData(0)=(LifeSpan=20,Multiplier=0.100000,bDispellable=True,bSingle=True,bBuff=False)
 	ComboData(1)=(LifeSpan=20,Multiplier=400.00,bDispellable=True,bSingle=True,bBuff=False)
 	OwnerName="Tentator"
@@ -540,7 +540,7 @@ defaultproperties
 	NewHealth=35000
 	bHealthRegen=False
 	bCanHurtNearbyTargets=True
-	ControllerClass=Class'DEKMonsters208AG.DCMonsterController'
+	ControllerClass=Class'DEKMonsters208AJ.DCMonsterController'
 	AChannel=255
 	TeleportRange=7000.000000
 	ScaleMultiplier=2.000
@@ -550,21 +550,21 @@ defaultproperties
 	LowMaterialChance=40
 	MediumMaterialChance=60
 	HighMaterialChance=90
-	LowMaterials(0)=Class'DEKRPG208AG.AbilityMaterialLumber'
-	LowMaterials(1)=Class'DEKRPG208AG.AbilityMaterialCombatBoots'
-	LowMaterials(2)=Class'DEKRPG208AG.AbilityMaterialTarydiumShards'
-	LowMaterials(3)=Class'DEKRPG208AG.AbilityMaterialSteel'
-	LowMaterials(4)=Class'DEKRPG208AG.AbilityMaterialNaliFruit'
-	LowMaterials(5)=Class'DEKRPG208AG.AbilityMaterialGloves'
-	MediumMaterials(0)=Class'DEKRPG208AG.AbilityMaterialLeather'
-	MediumMaterials(1)=Class'DEKRPG208AG.AbilityMaterialPlatedArmor'
-	MediumMaterials(2)=Class'DEKRPG208AG.AbilityMaterialHoneysuckleVine'
-	MediumMaterials(3)=Class'DEKRPG208AG.AbilityMaterialEmbers'
-	MediumMaterials(4)=Class'DEKRPG208AG.AbilityMaterialArcticSuit'
-	HighMaterials(0)=Class'DEKRPG208AG.AbilityMaterialMoss'
-	HighMaterials(1)=Class'DEKRPG208AG.AbilityMaterialDust'
-	HighMaterials(2)=Class'DEKRPG208AG.AbilityMaterialNanite'
-	HighMaterials(3)=Class'DEKRPG208AG.AbilityMaterialPumice'
-	HighMaterials(4)=Class'DEKRPG208AG.AbilityMaterialIcicle'
-	VeryHighMaterials(0)=Class'DEKRPG208AG.AbilityMaterialHourglass'
+	LowMaterials(0)=Class'DEKRPG208AJ.AbilityMaterialLumber'
+	LowMaterials(1)=Class'DEKRPG208AJ.AbilityMaterialCombatBoots'
+	LowMaterials(2)=Class'DEKRPG208AJ.AbilityMaterialTarydiumShards'
+	LowMaterials(3)=Class'DEKRPG208AJ.AbilityMaterialSteel'
+	LowMaterials(4)=Class'DEKRPG208AJ.AbilityMaterialNaliFruit'
+	LowMaterials(5)=Class'DEKRPG208AJ.AbilityMaterialGloves'
+	MediumMaterials(0)=Class'DEKRPG208AJ.AbilityMaterialLeather'
+	MediumMaterials(1)=Class'DEKRPG208AJ.AbilityMaterialPlatedArmor'
+	MediumMaterials(2)=Class'DEKRPG208AJ.AbilityMaterialHoneysuckleVine'
+	MediumMaterials(3)=Class'DEKRPG208AJ.AbilityMaterialEmbers'
+	MediumMaterials(4)=Class'DEKRPG208AJ.AbilityMaterialArcticSuit'
+	HighMaterials(0)=Class'DEKRPG208AJ.AbilityMaterialMoss'
+	HighMaterials(1)=Class'DEKRPG208AJ.AbilityMaterialDust'
+	HighMaterials(2)=Class'DEKRPG208AJ.AbilityMaterialNanite'
+	HighMaterials(3)=Class'DEKRPG208AJ.AbilityMaterialPumice'
+	HighMaterials(4)=Class'DEKRPG208AJ.AbilityMaterialIcicle'
+	VeryHighMaterials(0)=Class'DEKRPG208AJ.AbilityMaterialHourglass'
 }
