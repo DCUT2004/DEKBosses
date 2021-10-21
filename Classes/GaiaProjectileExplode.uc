@@ -31,7 +31,7 @@ defaultproperties
          VelocityScale(1)=(RelativeTime=0.400000,RelativeVelocity=(X=-15.000000,Y=-15.000000,Z=-15.000000))
          VelocityScale(2)=(RelativeTime=0.600000,RelativeVelocity=(X=15.000000,Y=15.000000,Z=15.000000))
      End Object
-     Emitters(0)=SpriteEmitter'DEKBossMonsters209A.GaiaProjectileExplode.SpriteEmitter8'
+     Emitters(0)=SpriteEmitter'DEKBossMonsters209B.GaiaProjectileExplode.SpriteEmitter8'
 
      Begin Object Class=SpriteEmitter Name=SpriteEmitter9
          FadeOut=True
@@ -56,6 +56,6 @@ defaultproperties
          VelocityScale(1)=(RelativeTime=0.500000,RelativeVelocity=(X=4.000000,Y=4.000000,Z=3.000000))
          VelocityScale(2)=(RelativeTime=1.000000,RelativeVelocity=(X=3.000000,Y=3.000000,Z=1.000000))
      End Object
-     Emitters(1)=SpriteEmitter'DEKBossMonsters209A.GaiaProjectileExplode.SpriteEmitter9'
+     Emitters(1)=SpriteEmitter'DEKBossMonsters209B.GaiaProjectileExplode.SpriteEmitter9'
 
 }

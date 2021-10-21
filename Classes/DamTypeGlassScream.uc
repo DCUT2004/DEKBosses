@@ -3,7 +3,7 @@ class DamTypeGlassScream extends WeaponDamageType
 
 defaultproperties
 {
-     WeaponClass=Class'DEKBossMonsters209A.WeaponGlass'
+     WeaponClass=Class'DEKBossMonsters209B.WeaponGlass'
      DeathString="%o was deafened by Glass's scream."
      bArmorStops=False
 	 bDetonatesGoop=False

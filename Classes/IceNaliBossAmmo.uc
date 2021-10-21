@@ -3,5 +3,5 @@ class IceNaliBossAmmo extends Ammunition;
 defaultproperties
 {
      bLeadTarget=True
-     ProjectileClass=Class'DEKBossMonsters209A.IceNaliBossProj'
+     ProjectileClass=Class'DEKBossMonsters209B.IceNaliBossProj'
 }
