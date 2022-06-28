@@ -3,7 +3,7 @@ class DamTypeGlassClone extends WeaponDamageType
 
 defaultproperties
 {
-     WeaponClass=Class'DEKBossMonsters209D.WeaponGlass'
+     WeaponClass=Class'DEKBossMonsters209E.WeaponGlass'
      DeathString="%o was shattered by Glass's mirror."
      bArmorStops=False
 	 bDetonatesGoop=False

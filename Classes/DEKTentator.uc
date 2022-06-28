@@ -165,7 +165,7 @@ function StartCombo()
 		BInv.AdrenCounter = 0;
 	Instigator.Controller.Adrenaline = 0;
 	
-	Instigator.PlaySound(Sound'DEKBossMonsters209D.Boss.BossComboActivate', SLOT_None, 800.0,,2000.00);
+	Instigator.PlaySound(Sound'DEKBossMonsters209E.Boss.BossComboActivate', SLOT_None, 800.0,,2000.00);
 }
 
 function Teleport()
@@ -525,13 +525,13 @@ defaultproperties
 {
 	DamageReductionMultiplier=0.500000
 	XPReward=200
-	MinionClass=Class'DEKBossMonsters209D.MinionIceSkaarj'
+	MinionClass=Class'DEKBossMonsters209E.MinionIceSkaarj'
 	AdrenDripAmount=7
-	ComboClass(0)=Class'DEKRPG209D.ComboLifeDrainInv'
-	ComboClass(1)=Class'DEKRPG209D.ComboMisfortuneInv'
+	ComboClass(0)=Class'DEKRPG209E.ComboLifeDrainInv'
+	ComboClass(1)=Class'DEKRPG209E.ComboMisfortuneInv'
 	bComboDamage=False
 	ComboDamage=0
-	ComboDamageType=Class'DEKRPG209D.DamTypeCombo'
+	ComboDamageType=Class'DEKRPG209E.DamTypeCombo'
 	ComboData(0)=(LifeSpan=20,Multiplier=0.100000,bDispellable=True,bSingle=True,bBuff=False)
 	ComboData(1)=(LifeSpan=20,Multiplier=400.00,bDispellable=True,bSingle=True,bBuff=False)
 	OwnerName="Tentator"
@@ -540,7 +540,7 @@ defaultproperties
 	NewHealth=35000
 	bHealthRegen=False
 	bCanHurtNearbyTargets=True
-	ControllerClass=Class'DEKMonsters209D.DCMonsterController'
+	ControllerClass=Class'DEKMonsters209E.DCMonsterController'
 	AChannel=255
 	TeleportRange=7000.000000
 	ScaleMultiplier=2.000
@@ -550,21 +550,21 @@ defaultproperties
 	LowMaterialChance=40
 	MediumMaterialChance=60
 	HighMaterialChance=90
-	LowMaterials(0)=Class'DEKRPG209D.AbilityMaterialLumber'
-	LowMaterials(1)=Class'DEKRPG209D.AbilityMaterialCombatBoots'
-	LowMaterials(2)=Class'DEKRPG209D.AbilityMaterialTarydiumShards'
-	LowMaterials(3)=Class'DEKRPG209D.AbilityMaterialSteel'
-	LowMaterials(4)=Class'DEKRPG209D.AbilityMaterialNaliFruit'
-	LowMaterials(5)=Class'DEKRPG209D.AbilityMaterialGloves'
-	MediumMaterials(0)=Class'DEKRPG209D.AbilityMaterialLeather'
-	MediumMaterials(1)=Class'DEKRPG209D.AbilityMaterialPlatedArmor'
-	MediumMaterials(2)=Class'DEKRPG209D.AbilityMaterialHoneysuckleVine'
-	MediumMaterials(3)=Class'DEKRPG209D.AbilityMaterialEmbers'
-	MediumMaterials(4)=Class'DEKRPG209D.AbilityMaterialArcticSuit'
-	HighMaterials(0)=Class'DEKRPG209D.AbilityMaterialMoss'
-	HighMaterials(1)=Class'DEKRPG209D.AbilityMaterialDust'
-	HighMaterials(2)=Class'DEKRPG209D.AbilityMaterialNanite'
-	HighMaterials(3)=Class'DEKRPG209D.AbilityMaterialPumice'
-	HighMaterials(4)=Class'DEKRPG209D.AbilityMaterialIcicle'
-	VeryHighMaterials(0)=Class'DEKRPG209D.AbilityMaterialHourglass'
+	LowMaterials(0)=Class'DEKRPG209E.AbilityMaterialLumber'
+	LowMaterials(1)=Class'DEKRPG209E.AbilityMaterialCombatBoots'
+	LowMaterials(2)=Class'DEKRPG209E.AbilityMaterialTarydiumShards'
+	LowMaterials(3)=Class'DEKRPG209E.AbilityMaterialSteel'
+	LowMaterials(4)=Class'DEKRPG209E.AbilityMaterialNaliFruit'
+	LowMaterials(5)=Class'DEKRPG209E.AbilityMaterialGloves'
+	MediumMaterials(0)=Class'DEKRPG209E.AbilityMaterialLeather'
+	MediumMaterials(1)=Class'DEKRPG209E.AbilityMaterialPlatedArmor'
+	MediumMaterials(2)=Class'DEKRPG209E.AbilityMaterialHoneysuckleVine'
+	MediumMaterials(3)=Class'DEKRPG209E.AbilityMaterialEmbers'
+	MediumMaterials(4)=Class'DEKRPG209E.AbilityMaterialArcticSuit'
+	HighMaterials(0)=Class'DEKRPG209E.AbilityMaterialMoss'
+	HighMaterials(1)=Class'DEKRPG209E.AbilityMaterialDust'
+	HighMaterials(2)=Class'DEKRPG209E.AbilityMaterialNanite'
+	HighMaterials(3)=Class'DEKRPG209E.AbilityMaterialPumice'
+	HighMaterials(4)=Class'DEKRPG209E.AbilityMaterialIcicle'
+	VeryHighMaterials(0)=Class'DEKRPG209E.AbilityMaterialHourglass'
 }
