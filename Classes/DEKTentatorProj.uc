@@ -6,5 +6,5 @@ defaultproperties
      MaxSpeed=950.000000
      Damage=80.000000
      DamageRadius=250.000000
-     MyDamageType=Class'DEKBossMonsters209C.DamTypeDEKTentator'
+     MyDamageType=Class'DEKBossMonsters209D.DamTypeDEKTentator'
 }

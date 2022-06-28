@@ -3,6 +3,6 @@ class DamTypeLuciferRetaliation extends WeaponDamageType
 
 defaultproperties
 {
-     WeaponClass=Class'DEKBossMonsters209C.WeaponLucifer'
+     WeaponClass=Class'DEKBossMonsters209D.WeaponLucifer'
      DeathString="%o, why would you try to use heat magic on Lucifer?"
 }
