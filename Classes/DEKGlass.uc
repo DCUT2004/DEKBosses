@@ -275,7 +275,7 @@ function StartCombo()
 			Combo.AddAilment(Self, ComboData[x].bAll, ComboData[x].bMulti, ComboData[x].bSingle, ComboData[x].Lifespan, ComboClass[x], ComboData[x].Multiplier, ComboData[x].bDispellable);
 	}
 	
-	Instigator.PlaySound(Sound'DEKBossMonsters209E.Boss.BossComboActivate', SLOT_None, 800.0,,2000.00);
+	Instigator.PlaySound(Sound'DEKBossMonsters209F.Boss.BossComboActivate', SLOT_None, 800.0,,2000.00);
 }
 
 
@@ -554,15 +554,15 @@ defaultproperties
 	MaxChildren=2
 	DamageReductionMultiplier=0.500000
 	XPReward=200
-	MinionClass=Class'DEKBossMonsters209E.MinionTechSniper'
+	MinionClass=Class'DEKBossMonsters209F.MinionTechSniper'
 	AdrenDripAmount=5
 	bComboDamage=True
 	bComboDamageMulti=True
 	ComboDamage=150
-	ComboDamageType=Class'DEKRPG209E.DamTypeCombo'
+	ComboDamageType=Class'DEKRPG209F.DamTypeCombo'
 	AChannel=255
 	TeleportRange=7000.000000
-	AmmunitionClass=Class'DEKBossMonsters209E.DEKGlassAmmo'
+	AmmunitionClass=Class'DEKBossMonsters209F.DEKGlassAmmo'
 	OwnerName="Glass"
 	Mass=1000.00
 	fHealth=35000.00
@@ -576,21 +576,21 @@ defaultproperties
 	LowMaterialChance=25
 	MediumMaterialChance=50
 	HighMaterialChance=85
-	LowMaterials(0)=Class'DEKRPG209E.AbilityMaterialLumber'
-	LowMaterials(1)=Class'DEKRPG209E.AbilityMaterialCombatBoots'
-	LowMaterials(2)=Class'DEKRPG209E.AbilityMaterialTarydiumShards'
-	LowMaterials(3)=Class'DEKRPG209E.AbilityMaterialSteel'
-	LowMaterials(4)=Class'DEKRPG209E.AbilityMaterialNaliFruit'
-	LowMaterials(5)=Class'DEKRPG209E.AbilityMaterialGloves'
-	MediumMaterials(0)=Class'DEKRPG209E.AbilityMaterialLeather'
-	MediumMaterials(1)=Class'DEKRPG209E.AbilityMaterialPlatedArmor'
-	MediumMaterials(2)=Class'DEKRPG209E.AbilityMaterialHoneysuckleVine'
-	MediumMaterials(3)=Class'DEKRPG209E.AbilityMaterialEmbers'
-	MediumMaterials(4)=Class'DEKRPG209E.AbilityMaterialArcticSuit'
-	HighMaterials(0)=Class'DEKRPG209E.AbilityMaterialMoss'
-	HighMaterials(1)=Class'DEKRPG209E.AbilityMaterialDust'
-	HighMaterials(2)=Class'DEKRPG209E.AbilityMaterialNanite'
-	HighMaterials(3)=Class'DEKRPG209E.AbilityMaterialPumice'
-	HighMaterials(4)=Class'DEKRPG209E.AbilityMaterialIcicle'
-	VeryHighMaterials(0)=Class'DEKRPG209E.AbilityMaterialStarChart'
+	LowMaterials(0)=Class'DEKRPG209F.AbilityMaterialLumber'
+	LowMaterials(1)=Class'DEKRPG209F.AbilityMaterialCombatBoots'
+	LowMaterials(2)=Class'DEKRPG209F.AbilityMaterialTarydiumShards'
+	LowMaterials(3)=Class'DEKRPG209F.AbilityMaterialSteel'
+	LowMaterials(4)=Class'DEKRPG209F.AbilityMaterialNaliFruit'
+	LowMaterials(5)=Class'DEKRPG209F.AbilityMaterialGloves'
+	MediumMaterials(0)=Class'DEKRPG209F.AbilityMaterialLeather'
+	MediumMaterials(1)=Class'DEKRPG209F.AbilityMaterialPlatedArmor'
+	MediumMaterials(2)=Class'DEKRPG209F.AbilityMaterialHoneysuckleVine'
+	MediumMaterials(3)=Class'DEKRPG209F.AbilityMaterialEmbers'
+	MediumMaterials(4)=Class'DEKRPG209F.AbilityMaterialArcticSuit'
+	HighMaterials(0)=Class'DEKRPG209F.AbilityMaterialMoss'
+	HighMaterials(1)=Class'DEKRPG209F.AbilityMaterialDust'
+	HighMaterials(2)=Class'DEKRPG209F.AbilityMaterialNanite'
+	HighMaterials(3)=Class'DEKRPG209F.AbilityMaterialPumice'
+	HighMaterials(4)=Class'DEKRPG209F.AbilityMaterialIcicle'
+	VeryHighMaterials(0)=Class'DEKRPG209F.AbilityMaterialStarChart'
 }

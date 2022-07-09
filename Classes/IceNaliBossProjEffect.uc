@@ -41,7 +41,7 @@ defaultproperties
          Texture=Texture'EpicParticles.Flares.SoftFlare'
          LifetimeRange=(Min=0.020000,Max=0.020000)
      End Object
-     Emitters(0)=SpriteEmitter'DEKBossMonsters209E.IceNaliBossProjEffect.SpriteEmitter7'
+     Emitters(0)=SpriteEmitter'DEKBossMonsters209F.IceNaliBossProjEffect.SpriteEmitter7'
 
      Begin Object Class=SpriteEmitter Name=SpriteEmitter9
          UseColorScale=True
@@ -69,7 +69,7 @@ defaultproperties
          WarmupTicksPerSecond=1.000000
          RelativeWarmupTime=1.000000
      End Object
-     Emitters(1)=SpriteEmitter'DEKBossMonsters209E.IceNaliBossProjEffect.SpriteEmitter9'
+     Emitters(1)=SpriteEmitter'DEKBossMonsters209F.IceNaliBossProjEffect.SpriteEmitter9'
 
      Begin Object Class=SpriteEmitter Name=SpriteEmitter11
          UseColorScale=True
@@ -94,7 +94,7 @@ defaultproperties
          WarmupTicksPerSecond=1.000000
          RelativeWarmupTime=1.000000
      End Object
-     Emitters(2)=SpriteEmitter'DEKBossMonsters209E.IceNaliBossProjEffect.SpriteEmitter11'
+     Emitters(2)=SpriteEmitter'DEKBossMonsters209F.IceNaliBossProjEffect.SpriteEmitter11'
 
      Begin Object Class=SpriteEmitter Name=SpriteEmitter12
          UseColorScale=True
@@ -117,7 +117,7 @@ defaultproperties
          WarmupTicksPerSecond=1.000000
          RelativeWarmupTime=1.000000
      End Object
-     Emitters(3)=SpriteEmitter'DEKBossMonsters209E.IceNaliBossProjEffect.SpriteEmitter12'
+     Emitters(3)=SpriteEmitter'DEKBossMonsters209F.IceNaliBossProjEffect.SpriteEmitter12'
 
      Begin Object Class=SpriteEmitter Name=SpriteEmitter13
          UseColorScale=True
@@ -141,7 +141,7 @@ defaultproperties
          WarmupTicksPerSecond=1.000000
          RelativeWarmupTime=1.000000
      End Object
-     Emitters(4)=SpriteEmitter'DEKBossMonsters209E.IceNaliBossProjEffect.SpriteEmitter13'
+     Emitters(4)=SpriteEmitter'DEKBossMonsters209F.IceNaliBossProjEffect.SpriteEmitter13'
 
      Begin Object Class=MeshEmitter Name=MeshEmitter7
          StaticMesh=StaticMesh'AW-2004Particles.Weapons.PlasmaSphere'
@@ -156,7 +156,7 @@ defaultproperties
          WarmupTicksPerSecond=1.000000
          RelativeWarmupTime=1.000000
      End Object
-     Emitters(5)=MeshEmitter'DEKBossMonsters209E.IceNaliBossProjEffect.MeshEmitter7'
+     Emitters(5)=MeshEmitter'DEKBossMonsters209F.IceNaliBossProjEffect.MeshEmitter7'
 
      Begin Object Class=SpriteEmitter Name=SpriteEmitter14
          UseColorScale=True
@@ -181,7 +181,7 @@ defaultproperties
          WarmupTicksPerSecond=1.000000
          RelativeWarmupTime=1.000000
      End Object
-     Emitters(6)=SpriteEmitter'DEKBossMonsters209E.IceNaliBossProjEffect.SpriteEmitter14'
+     Emitters(6)=SpriteEmitter'DEKBossMonsters209F.IceNaliBossProjEffect.SpriteEmitter14'
 
      Begin Object Class=TrailEmitter Name=TrailEmitter0
          TrailShadeType=PTTST_PointLife
@@ -206,7 +206,7 @@ defaultproperties
          Texture=Texture'AW-2k4XP.Weapons.ShockBallTrail'
          LifetimeRange=(Min=1000.000000,Max=1000.000000)
      End Object
-     Emitters(7)=TrailEmitter'DEKBossMonsters209E.IceNaliBossProjEffect.TrailEmitter0'
+     Emitters(7)=TrailEmitter'DEKBossMonsters209F.IceNaliBossProjEffect.TrailEmitter0'
 
      bNoDelete=False
 }

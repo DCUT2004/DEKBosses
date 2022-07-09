@@ -184,7 +184,7 @@ function StartCombo()
 		BInv.AdrenCounter = 0;
 	Instigator.Controller.Adrenaline = 0;
 	
-	Instigator.PlaySound(Sound'DEKBossMonsters209E.Boss.BossComboActivate', SLOT_None, 800.0,,2000.00);
+	Instigator.PlaySound(Sound'DEKBossMonsters209F.Boss.BossComboActivate', SLOT_None, 800.0,,2000.00);
 }
 
 function vector GetFireStart(vector X, vector Y, vector Z)
@@ -517,19 +517,19 @@ function RewardMaterial()
 
 defaultproperties
 {
-	AmmunitionClass=Class'DEKBossMonsters209E.IceNaliBossAmmo'
+	AmmunitionClass=Class'DEKBossMonsters209F.IceNaliBossAmmo'
 	DamageReductionMultiplier=0.500000
 	XPReward=200
-	MinionClass=Class'DEKBossMonsters209E.MinionIceSlith'
+	MinionClass=Class'DEKBossMonsters209F.MinionIceSlith'
 	AdrenDripAmount=7
-	ComboClass(0)=Class'DEKRPG209E.ComboFreezeInv'
+	ComboClass(0)=Class'DEKRPG209F.ComboFreezeInv'
 	bComboDamage=True
 	bComboDamageAll=True
 	ComboDamage=100
-	ComboDamageType=Class'DEKRPG209E.DamTypeCombo'
+	ComboDamageType=Class'DEKRPG209F.DamTypeCombo'
 	ComboData(0)=(LifeSpan=10,Multiplier=5.000000,bDispellable=True,bAll=True,bBuff=False)
 	RetaliationPercent=0.5000
-	DamTypeRetaliationClass=Class'DEKBossMonsters209E.DamTypeIceNaliRetaliation'
+	DamTypeRetaliationClass=Class'DEKBossMonsters209F.DamTypeIceNaliRetaliation'
 	OwnerName="Arctic Nali"
 	HealthMax=10000.000000
 	Health=35000
@@ -537,23 +537,23 @@ defaultproperties
 	LowMaterialChance=40
 	MediumMaterialChance=60
 	HighMaterialChance=90
-	LowMaterials(0)=Class'DEKRPG209E.AbilityMaterialLumber'
-	LowMaterials(1)=Class'DEKRPG209E.AbilityMaterialCombatBoots'
-	LowMaterials(2)=Class'DEKRPG209E.AbilityMaterialTarydiumShards'
-	LowMaterials(3)=Class'DEKRPG209E.AbilityMaterialSteel'
-	LowMaterials(4)=Class'DEKRPG209E.AbilityMaterialNaliFruit'
-	LowMaterials(5)=Class'DEKRPG209E.AbilityMaterialGloves'
-	MediumMaterials(0)=Class'DEKRPG209E.AbilityMaterialLeather'
-	MediumMaterials(1)=Class'DEKRPG209E.AbilityMaterialPlatedArmor'
-	MediumMaterials(2)=Class'DEKRPG209E.AbilityMaterialHoneysuckleVine'
-	MediumMaterials(3)=Class'DEKRPG209E.AbilityMaterialEmbers'
-	MediumMaterials(4)=Class'DEKRPG209E.AbilityMaterialArcticSuit'
-	HighMaterials(0)=Class'DEKRPG209E.AbilityMaterialMoss'
-	HighMaterials(1)=Class'DEKRPG209E.AbilityMaterialDust'
-	HighMaterials(2)=Class'DEKRPG209E.AbilityMaterialNanite'
-	HighMaterials(3)=Class'DEKRPG209E.AbilityMaterialPumice'
-	HighMaterials(4)=Class'DEKRPG209E.AbilityMaterialIcicle'
-	VeryHighMaterials(0)=Class'DEKRPG209E.AbilityMaterialMoonlitStone'
+	LowMaterials(0)=Class'DEKRPG209F.AbilityMaterialLumber'
+	LowMaterials(1)=Class'DEKRPG209F.AbilityMaterialCombatBoots'
+	LowMaterials(2)=Class'DEKRPG209F.AbilityMaterialTarydiumShards'
+	LowMaterials(3)=Class'DEKRPG209F.AbilityMaterialSteel'
+	LowMaterials(4)=Class'DEKRPG209F.AbilityMaterialNaliFruit'
+	LowMaterials(5)=Class'DEKRPG209F.AbilityMaterialGloves'
+	MediumMaterials(0)=Class'DEKRPG209F.AbilityMaterialLeather'
+	MediumMaterials(1)=Class'DEKRPG209F.AbilityMaterialPlatedArmor'
+	MediumMaterials(2)=Class'DEKRPG209F.AbilityMaterialHoneysuckleVine'
+	MediumMaterials(3)=Class'DEKRPG209F.AbilityMaterialEmbers'
+	MediumMaterials(4)=Class'DEKRPG209F.AbilityMaterialArcticSuit'
+	HighMaterials(0)=Class'DEKRPG209F.AbilityMaterialMoss'
+	HighMaterials(1)=Class'DEKRPG209F.AbilityMaterialDust'
+	HighMaterials(2)=Class'DEKRPG209F.AbilityMaterialNanite'
+	HighMaterials(3)=Class'DEKRPG209F.AbilityMaterialPumice'
+	HighMaterials(4)=Class'DEKRPG209F.AbilityMaterialIcicle'
+	VeryHighMaterials(0)=Class'DEKRPG209F.AbilityMaterialMoonlitStone'
 	AChannel=255
 	DeathAnim(0)="Dead"
 	DeathAnim(1)="Dead2"
@@ -566,7 +566,7 @@ defaultproperties
 	HitSound(3)=Sound'satoreMonsterPackv120.Nali.injur2n'
 	DeathSound(0)=Sound'satoreMonsterPackv120.Nali.death1n'
 	DeathSound(1)=Sound'satoreMonsterPackv120.Nali.death2n'
-    GibGroupClass=Class'DEKMonsters209E.IceGibGroup'
+    GibGroupClass=Class'DEKMonsters209F.IceGibGroup'
 	WallDodgeAnims(0)="levitate"
 	WallDodgeAnims(1)="levitate"
 	WallDodgeAnims(2)="levitate"
@@ -578,7 +578,7 @@ defaultproperties
 	FireRifleRapidAnim="spell"
 	FireRifleBurstAnim="spell"
 	MeleeRange=60.000000
-	ControllerClass=Class'DEKMonsters209E.DCMonsterController'
+	ControllerClass=Class'DEKMonsters209F.DCMonsterController'
 	MovementAnims(0)="levitate"
 	MovementAnims(1)="levitate"
 	MovementAnims(2)="levitate"
