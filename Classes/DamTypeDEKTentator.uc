@@ -5,5 +5,5 @@ defaultproperties
      DeathString="%o was killed by Tentator."
      bDetonatesGoop=True
      KDamageImpulse=10000.000000
-     WeaponClass=Class'DEKBossMonsters209F.WeaponTentator'
+     WeaponClass=Class'DEKBossMonsters999X.WeaponTentator'
 }

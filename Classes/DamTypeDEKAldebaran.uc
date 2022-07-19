@@ -3,7 +3,7 @@ class DamTypeDEKAldebaran extends WeaponDamageType
 
 defaultproperties
 {
-     WeaponClass=Class'DEKBossMonsters209F.WeaponAldebaran'
+     WeaponClass=Class'DEKBossMonsters999X.WeaponAldebaran'
      DeathString="%o was killed by an Aldebaran."
      bDetonatesGoop=True
      KDamageImpulse=10000.000000
