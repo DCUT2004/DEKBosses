@@ -28,7 +28,7 @@ struct ComboInfo
 var config Array<ComboInfo> ComboData;
 
 //Magic weapon resistance
-var config Array <class <RPGWeapon> > RetaliateMagicClass;
+var config Array < class<AddonPowerType> > RetaliateMagicClass;
 var config float RetaliationPercent;
 var Class<DamageType> DamTypeRetaliationClass;
 
@@ -278,8 +278,10 @@ state Teleporting
 function TakeDamage(int Damage, Pawn instigatedBy, Vector hitlocation, Vector momentum, class<DamageType> damageType)
 {
 	local EarthInv Inv;
-	local RPGWeapon MagicWeapon;
+	local DEKRPGWeapon MagicWeapon;
 	local int x;
+    local int iAddon;
+    local int numMatches;
 	
 	if (Damage > 0)
 	{
@@ -292,17 +294,27 @@ function TakeDamage(int Damage, Pawn instigatedBy, Vector hitlocation, Vector mo
 		if (ClassIsChildOf(damagetype, class'DamTypeLynxBlade'))
 			return;
 		//Retaliation
-		if (instigatedBy != None && RPGWeapon(instigatedBy.Weapon) != None)
+		if (instigatedBy != None && DEKRPGWeapon(instigatedBy.Weapon) != None)
 		{
-			MagicWeapon = RPGWeapon(instigatedBy.Weapon);
-			for (x = 0; x < RetaliateMagicClass.Length; x++)
-			{
-				if (MagicWeapon.Class == RetaliateMagicClass[x])
-				{
-					instigatedBy.TakeDamage(Damage * RetaliationPercent, Self, instigatedBy.Location, vect(0,0,0), DamTypeRetaliationClass);
-					break;
-				}
-			}
+            numMatches = 0;
+			MagicWeapon = DEKRPGWeapon(instigatedBy.Weapon);
+            if (MagicWeapon != None)
+            {
+    			for (x = 0; x < RetaliateMagicClass.Length; x++)
+    			{
+                    for (iAddon =  0; iAddon < MagicWeapon.NumPowerTypes; iAddon++)
+                    {
+        				if (MagicWeapon.CurrentPowerTypes[iAddon].Class == RetaliateMagicClass[x])
+        				{
+        					numMatches++;
+        				}
+                    }
+    			}
+                if (numMatches > 0)
+                {
+    				instigatedBy.TakeDamage(Damage * RetaliationPercent * numMatches, Self, instigatedBy.Location, vect(0,0,0), DamTypeRetaliationClass);
+                }
+            }
 		}
 		Damage *= DamageReductionMultiplier;
 	}
