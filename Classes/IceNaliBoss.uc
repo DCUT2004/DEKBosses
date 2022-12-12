@@ -8,22 +8,16 @@ var config int XPReward;
 var config class<Monster> MinionClass;
 
 //Combo variables
-var ComboInv Combo;
+var StatusEffectInventory_Player StatusManager;
 var config int AdrenDripAmount;
-var config Array < class < ComboEffectInv > > ComboClass;
-var config bool bComboDamage;
-var config bool bComboDamageAll, bComboDamageMulti, bComboDamageSingle;
-var config int ComboDamage;
-var config class<DamageType> ComboDamageType;
+
 struct ComboInfo
 {
-	var int Lifespan;
-	var bool bBuff;
-	var float Multiplier;
+	var Class<StatusEffectData> StatusEffectClass;
+	var int Modifier;
+	var int StatusLifespan;
 	var bool bDispellable;
-	var bool bAll;
-	var bool bMulti;
-	var bool bSingle;
+	var bool bStackable;
 };
 var config Array<ComboInfo> ComboData;
 
@@ -56,21 +50,15 @@ replication
 simulated function PostBeginPlay()
 {
 	local IceInv Inv;
+	local int x;
 	
-	//ScoringValue *= class'ElementalConfigure'.default.FireScoreMultiplier;
-	//GroundSpeed *= class'ElementalConfigure'.default.FireGroundSpeedMultiplier;
-	//AirSpeed *= class'ElementalConfigure'.default.FireAirSpeedMultiplier;
-	//WaterSpeed *= class'ElementalConfigure'.default.FireWaterSpeedMultiplier;
 	Mass *= class'ElementalConfigure'.default.BossMassMultiplier;
-	//SetLocation(Instigator.Location+vect(0,0,1)*(Instigator.CollisionHeight*class'ElementalConfigure'.default.FireDrawscaleMultiplier/2));
-	//SetDrawScale(Drawscale*class'ElementalConfigure'.default.FireDrawscaleMultiplier);
-	//SetCollisionSize(CollisionRadius*class'ElementalConfigure'.default.FireDrawscaleMultiplier, CollisionHeight*class'ElementalConfigure'.default.FireDrawscaleMultiplier);
 	
 	if (Instigator != None)
 	{
 		Inv = IceInv(Instigator.FindInventoryType(class'IceInv'));
 		BInv = BossInv(Instigator.FindInventoryType(class'BossInv'));
-		Combo = ComboInv(Instigator.FindInventoryType(class'ComboInv'));
+		StatusManager = StatusEffectInventory_Player(Class'StatusEffectManager'.static.GetStatusEffectManager(Instigator));
 		if (Inv == None)
 		{
 			Inv = Instigator.Spawn(class'IceInv');
@@ -83,32 +71,15 @@ simulated function PostBeginPlay()
 			BInv.MinionClass = MinionClass;
 			BInv.GiveTo(Instigator);
 		}
-		if (Combo == None)
+		if (StatusManager == None)
 		{
-			Combo = Instigator.Spawn(class'ComboInv');
-			Combo.GiveTo(Instigator);
+			StatusManager = Instigator.Spawn(Class'StatusEffectInventory_Player');
+			StatusManager.GiveTo(Instigator);
 		}
+		if (StatusManager != None)
+			for (x = 0; x < ComboData.Length; x++)
+				StatusManager.AddCombo(ComboData[x].StatusEffectClass, ComboData[x].Modifier, ComboData[x].StatusLifespan, ComboData[x].bDispellable, ComboData[x].bStackable);
 	}
-	
-	if (!bComboDamage)
-		ComboDamage = 0;
-	
-	if (bComboDamageAll)
-	{
-		bComboDamageMulti = False;
-		bComboDamageSingle = False;
-	}
-	else if (bComboDamageMulti)
-	{
-		bComboDamageAll = False;
-		bComboDamageSingle = False;
-	}
-	else if (bComboDamageSingle)
-	{
-		bComboDamageAll = False;
-		bComboDamageMulti = False;
-	}
-	
 	Super.PostBeginPlay();
 }
 
@@ -150,13 +121,9 @@ function RangedAttack(Actor A)
 		SetAnimAction('spell');
 		FireProjectile();;
 	}
-	if (Instigator != None && Instigator.Controller != None)
-	{
-		if (Instigator.Controller.Adrenaline >= 100 && Combo != None)
-		{
-			StartCombo();
-		}
-	}
+	if (Instigator != None && Instigator.Controller != None && Instigator.Controller.Adrenaline >= 100)
+		StartCombo();
+
 	Controller.bPreparingMove = true;
 	Acceleration = vect(0,0,0);
 	bShotAnim = true;
@@ -164,21 +131,8 @@ function RangedAttack(Actor A)
 
 function StartCombo()
 {
-	local int x;
-	
-	if (bComboDamage && ComboDamage > 0)
-		Combo.ComboDamage(ComboDamage, bComboDamageAll, bComboDamageMulti, bComboDamageSingle, ComboDamageType, class'RocketExplosion', True);
-	
-	if (Combo != None)
-	{
-		for ( x = 0; x < ComboClass.Length; x++)
-		{
-			if (ComboData[x].bBuff)
-				Combo.AddBuff(Self, ComboData[x].bAll, ComboData[x].bMulti, ComboData[x].bSingle, ComboData[x].Lifespan, ComboClass[x], ComboData[x].Multiplier, ComboData[x].bDispellable);
-			else
-				Combo.AddAilment(Self, ComboData[x].bAll, ComboData[x].bMulti, ComboData[x].bSingle, ComboData[x].Lifespan, ComboClass[x], ComboData[x].Multiplier, ComboData[x].bDispellable);
-		}
-	}
+	if (StatusManager != None)
+		StatusManager.ExecuteCombos();
 	
 	if (BInv != None)
 		BInv.AdrenCounter = 0;
@@ -191,7 +145,6 @@ function vector GetFireStart(vector X, vector Y, vector Z)
 {
     return Location + 0.9*X - 0.5*Y;
 }
-
 
 function Teleport()
 {
@@ -534,12 +487,7 @@ defaultproperties
 	XPReward=200
 	MinionClass=Class'DEKBossMonsters999X.MinionIceSlith'
 	AdrenDripAmount=7
-	ComboClass(0)=Class'DEKRPG999X.ComboFreezeInv'
-	bComboDamage=True
-	bComboDamageAll=True
-	ComboDamage=100
-	ComboDamageType=Class'DEKRPG999X.DamTypeCombo'
-	ComboData(0)=(LifeSpan=10,Multiplier=5.000000,bDispellable=True,bAll=True,bBuff=False)
+	ComboData(0)=(StatusEffectClass=Class'DEKRPG999X.StatusEffect_Speed',Modifier=-3,StatusLifespan=15,bDispellable=True,bStackable=False)
 	RetaliationPercent=0.5000
 	DamTypeRetaliationClass=Class'DEKBossMonsters999X.DamTypeIceNaliRetaliation'
 	OwnerName="Arctic Nali"

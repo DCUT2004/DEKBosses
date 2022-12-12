@@ -42,8 +42,8 @@ simulated function Tick(float DeltaTime)
 {
 	if (BInv != None)
 		BInv.Destroy();
-	if (Combo != None)
-		Combo.Destroy();
+	if (StatusManager != None)
+		StatusManager.Destroy();
 	if(ParentGlass==none || ParentGlass.Controller==none || ParentGlass.Controller.Enemy==self)
 	{
 		Destroy();
@@ -71,7 +71,6 @@ defaultproperties
 	Health=150
 	HPDamage=30
 	AdrenDripAmount=0
-	bComboDamage=False
 	MinionClass=None
 	MaxChildren=0
 	ScoringValue=0

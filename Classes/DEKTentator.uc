@@ -9,22 +9,16 @@ var config class<Monster> MinionClass;
 var config float ScaleMultiplier;
 
 //Combo variables
-var ComboInv Combo;
+var StatusEffectInventory_Player StatusManager;
 var config int AdrenDripAmount;
-var config Array < class < ComboEffectInv > > ComboClass;
-var config bool bComboDamage;
-var config bool bComboDamageAll, bComboDamageMulti, bComboDamageSingle;
-var config int ComboDamage;
-var config class<DamageType> ComboDamageType;
+
 struct ComboInfo
 {
-	var int Lifespan;
-	var bool bBuff;
-	var float Multiplier;
+	var Class<StatusEffectData> StatusEffectClass;
+	var int Modifier;
+	var int StatusLifespan;
 	var bool bDispellable;
-	var bool bAll;
-	var bool bMulti;
-	var bool bSingle;
+	var bool bStackable;
 };
 var config Array<ComboInfo> ComboData;
 
@@ -49,6 +43,7 @@ replication
 function PostBeginPlay()
 {
 	local IceInv Inv;
+	local int x;
 	
 	Mass *= class'ElementalConfigure'.default.BossMassMultiplier;
 	SetLocation(Instigator.Location+vect(0,0,1)*(Instigator.CollisionHeight*ScaleMultiplier/2));
@@ -59,7 +54,7 @@ function PostBeginPlay()
 	{
 		Inv = IceInv(Instigator.FindInventoryType(class'IceInv'));
 		BInv = BossInv(Instigator.FindInventoryType(class'BossInv'));
-		Combo = ComboInv(Instigator.FindInventoryType(class'ComboInv'));
+		StatusManager = StatusEffectInventory_Player(Class'StatusEffectManager'.static.GetStatusEffectManager(Instigator));
 		if (Inv == None)
 		{
 			Inv = Instigator.Spawn(class'IceInv');
@@ -72,30 +67,14 @@ function PostBeginPlay()
 			BInv.MinionClass = MinionClass;
 			BInv.GiveTo(Instigator);
 		}
-		if (Combo == None)
+		if (StatusManager == None)
 		{
-			Combo = Instigator.Spawn(class'ComboInv');
-			Combo.GiveTo(Instigator);
+			StatusManager = Instigator.Spawn(Class'StatusEffectInventory_Player');
+			StatusManager.GiveTo(Instigator);
 		}
-	}
-	
-	if (!bComboDamage)
-		ComboDamage = 0;
-	
-	if (bComboDamageAll)
-	{
-		bComboDamageMulti = False;
-		bComboDamageSingle = False;
-	}
-	else if (bComboDamageMulti)
-	{
-		bComboDamageAll = False;
-		bComboDamageSingle = False;
-	}
-	else if (bComboDamageSingle)
-	{
-		bComboDamageAll = False;
-		bComboDamageMulti = False;
+		if (StatusManager != None)
+			for (x = 0; x < ComboData.Length; x++)
+				StatusManager.AddCombo(ComboData[x].StatusEffectClass, ComboData[x].Modifier, ComboData[x].StatusLifespan, ComboData[x].bDispellable, ComboData[x].bStackable);
 	}
 	
 	Super.PostBeginPlay();
@@ -121,7 +100,7 @@ function RangedAttack(Actor A)
 	}
 	if (Instigator != None && Instigator.Controller != None)
 	{
-		if (Instigator.Controller.Adrenaline >= 100 && Combo != None)
+		if (Instigator.Controller.Adrenaline >= 100 && StatusManager != None)
 		{
 			StartCombo();
 		}
@@ -145,21 +124,8 @@ function RangedAttack(Actor A)
 
 function StartCombo()
 {
-	local int x;
-	
-	if (bComboDamage && ComboDamage > 0)
-		Combo.ComboDamage(ComboDamage, bComboDamageAll, bComboDamageMulti, bComboDamageSingle, ComboDamageType, class'RocketExplosion');
-	
-	if (Combo != None)
-	{
-		for ( x = 0; x < ComboClass.Length; x++)
-		{
-			if (ComboData[x].bBuff)
-				Combo.AddBuff(Self, ComboData[x].bAll, ComboData[x].bMulti, ComboData[x].bSingle, ComboData[x].Lifespan, ComboClass[x], ComboData[x].Multiplier, ComboData[x].bDispellable);
-			else
-				Combo.AddAilment(Self, ComboData[x].bAll, ComboData[x].bMulti, ComboData[x].bSingle, ComboData[x].Lifespan, ComboClass[x], ComboData[x].Multiplier, ComboData[x].bDispellable);
-		}
-	}
+	if (StatusManager != None)
+		StatusManager.ExecuteCombos();
 	
 	if (BInv != None)
 		BInv.AdrenCounter = 0;
@@ -278,7 +244,7 @@ state Teleporting
 
 function TakeDamage(int Damage, Pawn instigatedBy, Vector hitlocation, Vector momentum, class<DamageType> damageType)
 {
-	local SuperHeatInv Inv;
+	local FireInv Inv;
 	
 	if (Damage > 0)
 	{
@@ -295,7 +261,7 @@ function TakeDamage(int Damage, Pawn instigatedBy, Vector hitlocation, Vector mo
 	
 	if (Damage > 0 && instigatedBy != None && instigatedBy.IsA('Monster') && instigatedBy.Controller != None && !instigatedBy.Controller.SameTeamAs(Self.Controller))
 	{
-		Inv = SuperHeatInv(instigatedBy.FindInventoryType(class'SuperHeatInv'));
+		Inv = FireInv(instigatedBy.FindInventoryType(class'FireInv'));
 		if (Inv != None)
 		{
 			Damage *= class'ElementalConfigure'.default.FireonIceDamageMultiplier;
@@ -303,16 +269,6 @@ function TakeDamage(int Damage, Pawn instigatedBy, Vector hitlocation, Vector mo
 	}
 	Super.TakeDamage(Damage, instigatedBy, hitlocation, momentum, damagetype);
 }
-
-//function PlayTakeHit(vector HitLocation, int Damage, class<DamageType> DamageType)
-//{
-//	return;
-//}
-
-//function PlayDirectionalHit(Vector HitLoc)
-//{
-//	return;		//do nothing. This function stuns the boss
-//}
 
 event EncroachedBy( actor Other )
 {
@@ -527,13 +483,8 @@ defaultproperties
 	XPReward=200
 	MinionClass=Class'DEKBossMonsters999X.MinionIceSkaarj'
 	AdrenDripAmount=7
-	ComboClass(0)=Class'DEKRPG999X.ComboLifeDrainInv'
-	ComboClass(1)=Class'DEKRPG999X.ComboMisfortuneInv'
-	bComboDamage=False
-	ComboDamage=0
-	ComboDamageType=Class'DEKRPG999X.DamTypeCombo'
-	ComboData(0)=(LifeSpan=20,Multiplier=0.100000,bDispellable=True,bSingle=True,bBuff=False)
-	ComboData(1)=(LifeSpan=20,Multiplier=400.00,bDispellable=True,bSingle=True,bBuff=False)
+	ComboData(0)=(StatusEffectClass=Class'DEKRPG999X.StatusEffect_Poison',Modifier=-2,StatusLifespan=10,bDispellable=True,bStackable=False)
+	ComboData(1)=(StatusEffectClass=Class'DEKRPG999X.StatusEffect_Misfortune',Modifier=-2,StatusLifespan=15,bDispellable=True,bStackable=False)
 	OwnerName="Tentator"
 	HealthMax=35000.000000
 	Health=35000

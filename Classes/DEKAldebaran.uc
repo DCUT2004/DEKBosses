@@ -9,22 +9,16 @@ var config class<Monster> MinionClass;
 var config float ScaleMultiplier;
 
 //Combo variables
-var ComboInv Combo;
+var StatusEffectInventory_Player StatusManager;
 var config int AdrenDripAmount;
-var config Array < class < ComboEffectInv > > ComboClass;
-var config bool bComboDamage;
-var config bool bComboDamageAll, bComboDamageMulti, bComboDamageSingle;
-var config int ComboDamage;
-var config class<DamageType> ComboDamageType;
+
 struct ComboInfo
 {
-	var int Lifespan;
-	var bool bBuff;
-	var float Multiplier;
+	var Class<StatusEffectData> StatusEffectClass;
+	var int Modifier;
+	var int StatusLifespan;
 	var bool bDispellable;
-	var bool bAll;
-	var bool bMulti;
-	var bool bSingle;
+	var bool bStackable;
 };
 var config Array<ComboInfo> ComboData;
 
@@ -44,6 +38,7 @@ replication
 function PostBeginPlay()
 {
 	local EarthInv Inv;
+	local int x;
 
 	Mass *= class'ElementalConfigure'.default.BossMassMultiplier;
 	SetLocation(Instigator.Location+vect(0,0,1)*(Instigator.CollisionHeight*ScaleMultiplier/2));
@@ -54,7 +49,7 @@ function PostBeginPlay()
 	{
 		Inv = EarthInv(Instigator.FindInventoryType(class'EarthInv'));
 		BInv = BossInv(Instigator.FindInventoryType(class'BossInv'));
-		Combo = ComboInv(Instigator.FindInventoryType(class'ComboInv'));
+		StatusManager = StatusEffectInventory_Player(Class'StatusEffectManager'.static.GetStatusEffectManager(Instigator));
 		if (Inv == None)
 		{
 			Inv = Instigator.Spawn(class'EarthInv');
@@ -67,30 +62,14 @@ function PostBeginPlay()
 			BInv.MinionClass = MinionClass;
 			BInv.GiveTo(Instigator);
 		}
-		if (Combo == None)
+		if (StatusManager == None)
 		{
-			Combo = Instigator.Spawn(class'ComboInv');
-			Combo.GiveTo(Instigator);
+			StatusManager = Instigator.Spawn(Class'StatusEffectInventory_Player');
+			StatusManager.GiveTo(Instigator);
 		}
-	}
-	
-	if (!bComboDamage)
-		ComboDamage = 0;
-	
-	if (bComboDamageAll)
-	{
-		bComboDamageMulti = False;
-		bComboDamageSingle = False;
-	}
-	else if (bComboDamageMulti)
-	{
-		bComboDamageAll = False;
-		bComboDamageSingle = False;
-	}
-	else if (bComboDamageSingle)
-	{
-		bComboDamageAll = False;
-		bComboDamageMulti = False;
+		if (StatusManager != None)
+			for (x = 0; x < ComboData.Length; x++)
+				StatusManager.AddCombo(ComboData[x].StatusEffectClass, ComboData[x].Modifier, ComboData[x].StatusLifespan, ComboData[x].bDispellable, ComboData[x].bStackable);
 	}
 	
 	Super.PostBeginPlay();
@@ -113,13 +92,9 @@ function RangedAttack(Actor A)
 		PlaySound(sound'BWeaponSpawn1', SLOT_Interface);
 		GotoState('Teleporting');
 	}
-	if (Instigator != None && Instigator.Controller != None)
-	{
-		if (Instigator.Controller.Adrenaline >= 100 && Combo != None)
-		{
-			StartCombo();
-		}
-	}
+	if (Instigator != None && Instigator.Controller != None && Instigator.Controller.Adrenaline >= 100)
+		StartCombo();
+	
 	if(VSize(A.Location - Location) < MeleeRange + CollisionRadius + A.CollisionRadius )
 	{
 		SetAnimAction(MeleeAnims[Rand(4)]);
@@ -139,18 +114,8 @@ function RangedAttack(Actor A)
 
 function StartCombo()
 {
-	local int x;
-	
-	if (bComboDamage && ComboDamage > 0)
-		Combo.ComboDamage(ComboDamage, bComboDamageAll, bComboDamageMulti, bComboDamageSingle, ComboDamageType, class'RocketExplosion', True);
-	
-	for ( x = 0; x < ComboClass.Length; x++)
-	{
-		if (ComboData[x].bBuff)
-			Combo.AddBuff(Self, ComboData[x].bAll, ComboData[x].bMulti, ComboData[x].bSingle, ComboData[x].Lifespan, ComboClass[x], ComboData[x].Multiplier, ComboData[x].bDispellable);
-		else
-			Combo.AddAilment(Self, ComboData[x].bAll, ComboData[x].bMulti, ComboData[x].bSingle, ComboData[x].Lifespan, ComboClass[x], ComboData[x].Multiplier, ComboData[x].bDispellable);
-	}
+	if (StatusManager != None)
+		StatusManager.ExecuteCombos();
 	
 	if (BInv != None)
 		BInv.AdrenCounter = 0;
@@ -380,12 +345,7 @@ defaultproperties
      XPReward=200
      MinionClass=Class'DEKBossMonsters999X.MinionPhantom'
      AdrenDripAmount=5
-     ComboClass(0)=Class'DEKRPG999X.ComboHealthMaxInv'
-     bComboDamage=True
-     bComboDamageMulti=True
-     ComboDamage=200
-     ComboDamageType=Class'DEKRPG999X.DamTypeCombo'
-     ComboData(0)=(LifeSpan=25,Multiplier=0.600000,bDispellable=True,bAll=False,bMulti=True,bSingle=False)
+	 ComboData(0)=(StatusEffectClass=Class'DEKRPG999X.StatusEffect_Parasite',Modifier=-3,StatusLifespan=0,bDispellable=False,bStackable=False)
      AChannel=255
      TeleportRange=7000.000000
      OwnerName="Aldebaran"
