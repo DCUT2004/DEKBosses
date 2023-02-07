@@ -356,5 +356,5 @@ defaultproperties
      ProjectileDamage=50
      Mass=1000.000000
 	 ScaleMultiplier=2.00
-     ControllerClass=Class'DEKMonsters999X.DCMonsterController'
+     ControllerClass=Class'DEKRPG999X.DCMonsterController'
 }

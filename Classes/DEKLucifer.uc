@@ -421,7 +421,7 @@ defaultproperties
 	OwnerName="Lucifer"
 	HealthMax=10000.000000
 	Health=35000
-	ControllerClass=Class'DEKMonsters999X.DCMonsterController'
+	ControllerClass=Class'DEKRPG999X.DCMonsterController'
 	AChannel=255
 	TeleportRange=7000.000000
 	MaterialChance=30

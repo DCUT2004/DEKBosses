@@ -491,7 +491,7 @@ defaultproperties
 	NewHealth=35000
 	bHealthRegen=False
 	bCanHurtNearbyTargets=True
-	ControllerClass=Class'DEKMonsters999X.DCMonsterController'
+	ControllerClass=Class'DEKRPG999X.DCMonsterController'
 	AChannel=255
 	TeleportRange=7000.000000
 	ScaleMultiplier=2.000

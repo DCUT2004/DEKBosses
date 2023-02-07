@@ -454,5 +454,5 @@ defaultproperties
 	HighMaterials(3)=Class'DEKRPG999X.AbilityMaterialPumice'
 	HighMaterials(4)=Class'DEKRPG999X.AbilityMaterialIcicle'
 	VeryHighMaterials(0)=Class'DEKRPG999X.AbilityMaterialTranslator'
-    ControllerClass=Class'DEKMonsters999X.DCMonsterController'
+    ControllerClass=Class'DEKRPG999X.DCMonsterController'
 }
