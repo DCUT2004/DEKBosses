@@ -42,8 +42,8 @@ simulated function Tick(float DeltaTime)
 {
 	if (BInv != None)
 		BInv.Destroy();
-	if (StatusManager != None)
-		StatusManager.Destroy();
+	if (Controller != None && BossMonsterController(Controller).StatusManager != None)
+		BossMonsterController(Controller).StatusManager.Destroy();
 	if(ParentGlass==none || ParentGlass.Controller==none || ParentGlass.Controller.Enemy==self)
 	{
 		Destroy();
