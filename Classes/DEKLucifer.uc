@@ -8,7 +8,7 @@ var config int XPReward;
 var config class<Monster> MinionClass;
 
 //Combo variables
-var StatusEffectInventory_Player StatusManager;
+var bool bComboSet;
 var config int AdrenDripAmount;
 
 struct ComboInfo
@@ -49,7 +49,6 @@ replication
 function PostBeginPlay()
 {
 	local FireInv Inv;
-	local int x;
 	
 	Mass *= class'ElementalConfigure'.default.BossMassMultiplier;
 	
@@ -57,7 +56,6 @@ function PostBeginPlay()
 	{
 		Inv = FireInv(Instigator.FindInventoryType(class'FireInv'));
 		BInv = BossInv(Instigator.FindInventoryType(class'BossInv'));
-		StatusManager = StatusEffectInventory_Player(Class'StatusEffectManager'.static.GetStatusEffectManager(Instigator));
 		if (Inv == None)
 		{
 			Inv = Instigator.Spawn(class'FireInv');
@@ -70,15 +68,8 @@ function PostBeginPlay()
 			BInv.MinionClass = MinionClass;
 			BInv.GiveTo(Instigator);
 		}
-		if (StatusManager == None)
-		{
-			StatusManager = Instigator.Spawn(Class'StatusEffectInventory_Player');
-			StatusManager.GiveTo(Instigator);
-		}
-		if (StatusManager != None)
-			for (x = 0; x < ComboData.Length; x++)
-				StatusManager.AddCombo(ComboData[x].StatusEffectClass, ComboData[x].Modifier, ComboData[x].StatusLifespan, ComboData[x].bDispellable, ComboData[x].bStackable);
 	}
+	bComboSet = False;
 	Super.PostBeginPlay();
 }
 
@@ -87,9 +78,21 @@ function bool SameSpeciesAs(Pawn P)
 		return ( P.class == MinionClass);
 }
 
+function SetCombo()
+{
+	local int x;
+
+	for (x = 0; x < ComboData.Length; x++)
+		StatusEffectInventory_Player(BossMonsterController(Controller).StatusManager).AddCombo(ComboData[x].StatusEffectClass, ComboData[x].Modifier, ComboData[x].StatusLifespan, ComboData[x].bDispellable, ComboData[x].bStackable);
+	bComboSet = True;
+}
+
 function RangedAttack(Actor A)
 {
 	local float decision;
+
+	if (!bComboSet && Controller != None && BossMonsterController(Controller) != None && BossMonsterController(Controller).StatusManager != None)
+		SetCombo();
 	
 	decision = FRand();
 	
@@ -110,9 +113,9 @@ function RangedAttack(Actor A)
 
 function StartCombo()
 {
-	if (StatusManager != None)
-		StatusManager.ExecuteCombos();
-	
+	if (Controller != None && BossMonsterController(Controller) != None && BossMonsterController(Controller).StatusManager != None)
+		StatusEffectInventory_Player(BossMonsterController(Controller).StatusManager).ExecuteCombos();
+
 	if (BInv != None)
 		BInv.AdrenCounter = 0;
 	Instigator.Controller.Adrenaline = 0;
@@ -410,6 +413,7 @@ function RewardMaterial()
 
 defaultproperties
 {
+	ControllerClass=Class'DEKBossMonsters999X.BossMonsterController'
 	ProjectileClass=Class'DEKBossMonsters999X.DEKLuciferProj'
 	DamageReductionMultiplier=0.500000
 	XPReward=200
@@ -421,7 +425,6 @@ defaultproperties
 	OwnerName="Lucifer"
 	HealthMax=10000.000000
 	Health=35000
-	ControllerClass=Class'DEKRPG999X.DCMonsterController'
 	AChannel=255
 	TeleportRange=7000.000000
 	MaterialChance=30
