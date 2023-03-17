@@ -9,7 +9,7 @@ var config class<Monster> MinionClass;
 var config float ScaleMultiplier;
 
 //Combo variables
-var StatusEffectInventory_Player StatusManager;
+var bool bComboSet;
 var config int AdrenDripAmount;
 
 struct ComboInfo
@@ -43,7 +43,6 @@ replication
 function PostBeginPlay()
 {
 	local IceInv Inv;
-	local int x;
 	
 	Mass *= class'ElementalConfigure'.default.BossMassMultiplier;
 	SetLocation(Instigator.Location+vect(0,0,1)*(Instigator.CollisionHeight*ScaleMultiplier/2));
@@ -54,7 +53,6 @@ function PostBeginPlay()
 	{
 		Inv = IceInv(Instigator.FindInventoryType(class'IceInv'));
 		BInv = BossInv(Instigator.FindInventoryType(class'BossInv'));
-		StatusManager = StatusEffectInventory_Player(Class'StatusEffectManager'.static.GetStatusEffectManager(Instigator));
 		if (Inv == None)
 		{
 			Inv = Instigator.Spawn(class'IceInv');
@@ -67,28 +65,33 @@ function PostBeginPlay()
 			BInv.MinionClass = MinionClass;
 			BInv.GiveTo(Instigator);
 		}
-		if (StatusManager == None)
-		{
-			StatusManager = Instigator.Spawn(Class'StatusEffectInventory_Player');
-			StatusManager.GiveTo(Instigator);
-		}
-		if (StatusManager != None)
-			for (x = 0; x < ComboData.Length; x++)
-				StatusManager.AddCombo(ComboData[x].StatusEffectClass, ComboData[x].Modifier, ComboData[x].StatusLifespan, ComboData[x].bDispellable, ComboData[x].bStackable);
 	}
-	
+	bComboSet = False;
 	Super.PostBeginPlay();
 }
 
 function bool SameSpeciesAs(Pawn P)
 {
-		return ( P.class == MinionClass);
+	return ( P.class == MinionClass);
+}
+
+function SetCombo()
+{
+	local int x;
+
+	for (x = 0; x < ComboData.Length; x++)
+		StatusEffectInventory_Player(BossMonsterController(Controller).StatusManager).AddCombo(ComboData[x].StatusEffectClass, ComboData[x].Modifier, ComboData[x].StatusLifespan, ComboData[x].bDispellable, ComboData[x].bStackable);
+	bComboSet = True;
 }
 
 function RangedAttack(Actor A)
 {
 	local float decision;
 	local vector adjust;
+
+
+	if (!bComboSet && Controller != None && BossMonsterController(Controller) != None && BossMonsterController(Controller).StatusManager != None)
+		SetCombo();
 	
 	decision = FRand();
 	Target = A;
@@ -100,7 +103,7 @@ function RangedAttack(Actor A)
 	}
 	if (Instigator != None && Instigator.Controller != None)
 	{
-		if (Instigator.Controller.Adrenaline >= 100 && StatusManager != None)
+		if (Instigator.Controller.Adrenaline >= 100)
 		{
 			StartCombo();
 		}
@@ -124,9 +127,9 @@ function RangedAttack(Actor A)
 
 function StartCombo()
 {
-	if (StatusManager != None)
-		StatusManager.ExecuteCombos();
-	
+	if (Controller != None && BossMonsterController(Controller) != None && BossMonsterController(Controller).StatusManager != None)
+		StatusEffectInventory_Player(BossMonsterController(Controller).StatusManager).ExecuteCombos();
+
 	if (BInv != None)
 		BInv.AdrenCounter = 0;
 	Instigator.Controller.Adrenaline = 0;
@@ -479,6 +482,7 @@ function FireProjectileL()
 
 defaultproperties
 {
+	ControllerClass=Class'DEKBossMonsters999X.BossMonsterController'
 	DamageReductionMultiplier=0.500000
 	XPReward=200
 	MinionClass=Class'DEKBossMonsters999X.MinionIceSkaarj'
@@ -491,7 +495,6 @@ defaultproperties
 	NewHealth=35000
 	bHealthRegen=False
 	bCanHurtNearbyTargets=True
-	ControllerClass=Class'DEKRPG999X.DCMonsterController'
 	AChannel=255
 	TeleportRange=7000.000000
 	ScaleMultiplier=2.000
