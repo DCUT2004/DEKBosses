@@ -9,7 +9,7 @@ var config class<Monster> MinionClass;
 var config float ScaleMultiplier;
 
 //Combo variables
-var StatusEffectInventory_Player StatusManager;
+var bool bComboSet;
 var config int AdrenDripAmount;
 
 struct ComboInfo
@@ -44,7 +44,6 @@ function PostBeginPlay()
 {
 	local EarthInv Inv;
 	local PoisonShieldInv PInv;
-	local int x;
 	
 	Mass *= class'ElementalConfigure'.default.BossMassMultiplier;
 	SetLocation(Instigator.Location+vect(0,0,1)*(Instigator.CollisionHeight*ScaleMultiplier/2));
@@ -55,7 +54,6 @@ function PostBeginPlay()
 	{
 		Inv = EarthInv(Instigator.FindInventoryType(class'EarthInv'));
 		BInv = BossInv(Instigator.FindInventoryType(class'BossInv'));
-		StatusManager = StatusEffectInventory_Player(Class'StatusEffectManager'.static.GetStatusEffectManager(Instigator));
 		PInv = PoisonShieldInv(Instigator.FindInventoryType(class'PoisonShieldInv'));
 		if (Inv == None)
 		{
@@ -69,20 +67,13 @@ function PostBeginPlay()
 			BInv.MinionClass = MinionClass;
 			BInv.GiveTo(Instigator);
 		}
-		if (StatusManager == None)
-		{
-			StatusManager = Instigator.Spawn(Class'StatusEffectInventory_Player');
-			StatusManager.GiveTo(Instigator);
-		}
-		if (StatusManager != None)
-			for (x = 0; x < ComboData.Length; x++)
-				StatusManager.AddCombo(ComboData[x].StatusEffectClass, ComboData[x].Modifier, ComboData[x].StatusLifespan, ComboData[x].bDispellable, ComboData[x].bStackable);
 		if (PInv == None)
 		{
 			PInv = Instigator.Spawn(class'PoisonShieldInv');
 			PInv.GiveTo(Instigator);
 		}
 	}
+	bComboSet = False;
 	Super.PostBeginPlay();
 }
 
@@ -91,9 +82,21 @@ function bool SameSpeciesAs(Pawn P)
 		return ( P.class == MinionClass);
 }
 
+function SetCombo()
+{
+	local int x;
+
+	for (x = 0; x < ComboData.Length; x++)
+		StatusEffectInventory_Player(BossMonsterController(Controller).StatusManager).AddCombo(ComboData[x].StatusEffectClass, ComboData[x].Modifier, ComboData[x].StatusLifespan, ComboData[x].bDispellable, ComboData[x].bStackable);
+	bComboSet = True;
+}
+
 function RangedAttack(Actor A)
 {
 	local float decision;
+
+	if (!bComboSet && Controller != None && BossMonsterController(Controller) != None && BossMonsterController(Controller).StatusManager != None)
+		SetCombo();
 	
 	decision = FRand();
 	
@@ -120,9 +123,8 @@ function RangedAttack(Actor A)
 
 function StartCombo()
 {
-	if (StatusManager != None)
-		StatusManager.ExecuteCombos();
-	
+	if (Controller != None && BossMonsterController(Controller) != None && BossMonsterController(Controller).StatusManager != None)
+		StatusEffectInventory_Player(BossMonsterController(Controller).StatusManager).ExecuteCombos();
 	if (BInv != None)
 		BInv.AdrenCounter = 0;
 	Instigator.Controller.Adrenaline = 0;
@@ -415,6 +417,7 @@ function RewardMaterial()
 
 defaultproperties
 {
+	ControllerClass=Class'DEKBossMonsters999X.BossMonsterController'
     ProjectileClass=Class'DEKBossMonsters999X.GaiaProjectile'
 	DamageReductionMultiplier=0.500000
 	XPReward=200
@@ -454,5 +457,4 @@ defaultproperties
 	HighMaterials(3)=Class'DEKRPG999X.AbilityMaterialPumice'
 	HighMaterials(4)=Class'DEKRPG999X.AbilityMaterialIcicle'
 	VeryHighMaterials(0)=Class'DEKRPG999X.AbilityMaterialTranslator'
-    ControllerClass=Class'DEKRPG999X.DCMonsterController'
 }
